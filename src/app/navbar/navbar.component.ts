@@ -10,7 +10,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class NavbarComponent implements OnInit {
   // isLoggedIn:boolean
   constructor(private router:Router,
-    private authenticationService:AuthenticationService) { }
+    public authenticationService:AuthenticationService) { }
   onLogOut(){
     this.router.navigate(['logout']);
   }

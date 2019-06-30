@@ -11,8 +11,7 @@ export class AuthenticationService {
   constructor(private router:Router) { }
 
   loginUser(username:string, password:string):boolean{
-    if(username === "anurag" 
-    && password === "Root#123" ){
+    if(password === "admin" ){
       this.userName = username;
       localStorage.setItem('credentials',JSON.stringify(
         {username:username,password:password}));

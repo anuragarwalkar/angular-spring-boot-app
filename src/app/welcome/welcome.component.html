@@ -1,3 +1,9 @@
 <p>
   welcome {{routeName|uppercase}}
 </p>
+<img *ngIf="!welcomeMessage && clickOnEvent" src="https://media2.giphy.com/media/rDeOjM6DZ1qda/giphy.gif" width="100">
+<p [ngClass]="error?'text-danger':'text-success'">{{welcomeMessage}}</p>
+
+<div class="caontiner">
+  <button (click)="getWelcomeMessage()" class="btn btn-success">Get message</button>
+</div>

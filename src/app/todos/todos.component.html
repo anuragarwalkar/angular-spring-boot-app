@@ -1,3 +1,22 @@
-<p>
-  todos works!
-</p>
+<table class="table mt-4">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Username</th>
+        <th scope="col">Description</th>
+        <th scope="col">Target Date</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos">
+        <th scope="row">{{todo.id}}</th>
+        <td>{{todo.description}}</td>
+        <td>{{todo.targetDate|date}}</td>
+        <td>{{todo.done}}</td>
+        <td><button class="btn btn-success btn-sm" (click)="onUpdate(todo.id)">Update</button></td>
+        <td><button class="btn btn-danger btn-sm" (click)="onDelete(todo.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
