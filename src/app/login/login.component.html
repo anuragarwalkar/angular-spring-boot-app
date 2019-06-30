@@ -1,3 +1,17 @@
-<p>
-  login works!
-</p>
+<form [formGroup]="loginForm" 
+style="width: 50%; margin:5rem auto" (ngSubmit)="onLogin()">
+    <div class="form-group">
+        <label for="usename">Username</label>
+        <input type="text" class="form-control" 
+        formControlName="username" placeholder="Username">
+      </div>
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" 
+          formControlName="password" placeholder="Password">
+      </div>
+      <div class="text-center">
+        <div *ngIf="login.status" class="text-danger">{{login.loginMessage}}</div>
+          <button type="submit" class="btn btn-success mt-4">Login</button>
+        </div>   
+</form>
