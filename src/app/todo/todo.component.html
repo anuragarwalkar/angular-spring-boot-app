@@ -1,3 +1,38 @@
-<p>
-  todo works!
-</p>
+<form [formGroup]="updateTodoForm" class="mt-4 mb-4" (ngSubmit)="onSubmit()">
+  <div class="form-group" *ngIf="updateForm">
+    <label for="todoId">Todo ID</label>
+    <input type="text" formControlName="id"  id="todoId" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" formControlName="username" id="username" class="form-control" placeholder="Username">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" formControlName="description" id="description" class="form-control" placeholder="Desciption">
+  </div>
+
+  <div class="form-group">
+      <label for="targetDate">Date</label>
+    <input type="date" formControlName="targetDate" 
+        id="targetDate" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label class='d-block'>Update</label>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" formControlName="update" id="inlineRadio1" value="true">
+        <label class="form-check-label" for="inlineRadio1">True</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" formControlName="update" id="inlineRadio2" value="false">
+        <label class="form-check-label" for="inlineRadio2">False</label>
+      </div>
+  </div>
+  <div class="text-center">
+    <button type="sumit" class="btn btn-success mr-4">{{updateForm? 'Save' :'Create'}}</button>
+    <button (click)="onCancelTodo()" type="button" class="btn btn-danger">Cancel</button>
+  </div>
+</form>

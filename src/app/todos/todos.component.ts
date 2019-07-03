@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../models/todo';
 import { TodoDataService } from '../services/data/todo-data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todos',
@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 })
 export class TodosComponent implements OnInit {
   todos:Todo[] =[];
-  constructor(private todoService:TodoDataService,private router:Router) { }
+  userName: any;
+  constructor(private todoService:TodoDataService,private router:Router, private route:ActivatedRoute) { }
 
   onDelete(id:number){
     if(confirm("This can not undo")){
-      this.todoService.deleteTodo('anurag',id).subscribe((res)=>{
+      this.todoService.deleteTodo(this.userName,id).subscribe((res)=>{
         console.log(res);
       },(err)=>{console.log(err)},()=>{
         this.todos.forEach((element)=>{
@@ -31,7 +32,8 @@ export class TodosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.todoService.retriveAllTodos('anurag').subscribe((res)=>{
+    this.userName = this.route.snapshot.params['username'];
+    this.todoService.retriveAllTodos(this.userName).subscribe((res)=>{
       this.todos = res;
     })
   }

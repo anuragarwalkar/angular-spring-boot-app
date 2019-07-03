@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -13,10 +13,11 @@ export class WelcomeComponent implements OnInit {
   error:boolean;
   clickOnEvent:boolean =false;
   
-  constructor(private route:ActivatedRoute,private dataService:DataService) { }
+  constructor(private route:ActivatedRoute,private dataService:DataService,private router:Router) { }
 
   ngOnInit() {
-    this.routeName = this.route.snapshot.params['name'];
+    this.routeName = this.route.snapshot.params['username'];
+
   }
 
   getWelcomeMessage(){

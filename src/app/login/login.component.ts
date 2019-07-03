@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     })
 
     if(this.loginService.isLoggedIn()){
-      this.router.navigate(['welcome',this.loginService.getUsername()])
+      this.router.navigate(['user',this.loginService.getUsername()])
     };
   }
 
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   onLogin():void{
     if(this.loginService.loginUser(this.loginForm.value.username,
       this.loginForm.value.password)){
-          this.router.navigate(['welcome',this.loginForm.value.username])
+          this.router.navigate(['user',this.loginForm.value.username])
       }else{
         this.login ={
           status:true,

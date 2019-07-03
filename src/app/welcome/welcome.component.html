@@ -1,9 +1,13 @@
-<p>
-  welcome {{routeName|uppercase}}
+<p class="mt-4">
+  Welcome, {{routeName|uppercase}}
 </p>
-<img *ngIf="!welcomeMessage && clickOnEvent" src="https://media2.giphy.com/media/rDeOjM6DZ1qda/giphy.gif" width="100">
+<img *ngIf="!welcomeMessage && clickOnEvent" src="assets/giphy.webp" width="100">
 <p [ngClass]="error?'text-danger':'text-success'">{{welcomeMessage}}</p>
 
-<div class="caontiner">
-  <button (click)="getWelcomeMessage()" class="btn btn-success">Get message</button>
+<div class="text-center mt-4">
+  <button (click)="getWelcomeMessage()" class="btn btn-success mr-4">Get message</button>
+  <a routerLink="todo" class="btn btn-warning mr-4">Create a new todo</a>
+  <a routerLink="todos" class="btn btn-primary">Get all todos</a>
+  
 </div>
+

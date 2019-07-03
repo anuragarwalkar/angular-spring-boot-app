@@ -1,3 +1,4 @@
+<button class="btn btn-success mt-4" routerLink="/user/{{userName}}/todo">Create new todo</button>
 <table class="table mt-4">
     <thead>
       <tr>
@@ -5,6 +6,7 @@
         <th scope="col">Username</th>
         <th scope="col">Description</th>
         <th scope="col">Target Date</th>
+        <th scope="col">Satus</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
       </tr>
@@ -12,6 +14,7 @@
     <tbody>
       <tr *ngFor="let todo of todos">
         <th scope="row">{{todo.id}}</th>
+        <th>{{todo.username}}</th>
         <td>{{todo.description}}</td>
         <td>{{todo.targetDate|date}}</td>
         <td>{{todo.done}}</td>
