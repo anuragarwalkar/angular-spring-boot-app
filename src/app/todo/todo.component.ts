@@ -20,20 +20,41 @@ export class TodoComponent implements OnInit {
     private service:TodoDataService,
     private router:Router) { }
 
+  get getTodayDate():string{
+    let today:any = new Date();
+    let dd:any = today.getDate();
+
+    let mm:any = today.getMonth()+1; 
+    let yyyy = today.getFullYear();
+    if(dd<10) 
+    {
+    dd='0'+dd;
+    } 
+
+    if(mm<10) 
+    {
+    mm='0'+mm;
+    } 
+    today = yyyy+'-'+mm+'-'+dd;
+    return today;
+  }  
+
   ngOnInit() {
     this.todoId = this.route.snapshot.params['id'];
     this.userName = this.route.snapshot.params['username'];
+    console.log('this.userName:', this.userName);
+    console.log('this.todoId:', this.todoId);
     this.updateForm = this.todoId !== undefined;
     this.updateTodoForm = new FormGroup({
       id: new FormControl({value:'',disabled:true}),
       username: new FormControl('',Validators.required),
       description: new FormControl('',Validators.required),
-      targetDate : new FormControl('',Validators.required),
+      targetDate : new FormControl(this.getTodayDate,Validators.required),
       update: new FormControl('',Validators.required)
     })
 
     if(this.updateForm){
-    this.service.getTodoById('anurag',this.todoId).subscribe(res=>{
+    this.service.getTodoById(this.userName,this.todoId).subscribe(res=>{
       this.updateTodoForm.setValue({
         id: res.id,
         username: res.username,
@@ -57,16 +78,26 @@ export class TodoComponent implements OnInit {
     console.log(this.updateTodoForm);
 
     if(this.updateForm){
+      console.log('update')
     this.service.updateTodo(this.userName,this.todoId,this.updateTodoForm.value).subscribe((res)=>{
       console.log(res);
 
-    },()=>{},()=>{this.router.navigate(['todos'])})
+    },(err)=>{
+      alert('404 Server is unrechable please contact anurag');
+    },()=>{this.navigateToTodos(this.userName)})
    
   }else{
+    console.log('create')
     this.service.createPost(this.userName,this.updateTodoForm.value).subscribe((res)=>{
       console.log(res);
-    },()=>{},()=>{this.router.navigate(['todos'])})
+    },(err)=>{
+      alert('404 Server is unrechable please contact anurag');
+    },()=>{this.navigateToTodos(this.userName)})
   }
+  }
+
+  navigateToTodos(userName:string):void{
+    this.router.navigate([`user/${userName}/todos`]);
   }
 
 }

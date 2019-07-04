@@ -28,13 +28,15 @@ export class TodosComponent implements OnInit {
   }
 
   onUpdate(id:number){
-    this.router.navigate(['todo',id])
+    this.router.navigate([`user/${this.userName}/todo/${id}`])
   }
 
   ngOnInit() {
     this.userName = this.route.snapshot.params['username'];
     this.todoService.retriveAllTodos(this.userName).subscribe((res)=>{
       this.todos = res;
+    },(err)=>{
+      alert('404 Server is unrechable please contact anurag');
     })
   }
 

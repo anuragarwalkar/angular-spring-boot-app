@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { TodosComponent } from './todos/todos.component';
 import { LogoutComponent } from './logout/logout.component';
 import { from } from 'rxjs';
 import { TodoComponent } from './todo/todo.component';
+import { HttpIntercepterBasicAuthServiceService } from './services/http-intercepter-basic-auth-service.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,11 @@ import { TodoComponent } from './todo/todo.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide:HTTP_INTERCEPTORS,useClass:HttpIntercepterBasicAuthServiceService,multi:true
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

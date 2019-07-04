@@ -9,7 +9,7 @@ import { DataService } from '../services/data.service';
 })
 export class WelcomeComponent implements OnInit {
   routeName:String;
-  private welcomeMessage:String;
+  welcomeMessage:String;
   error:boolean;
   clickOnEvent:boolean =false;
   
@@ -27,7 +27,7 @@ export class WelcomeComponent implements OnInit {
        this.error= false;
         this.welcomeMessage = res.message},(err)=>{
           this.error= true
-          this.welcomeMessage = err.error.message
+          this.welcomeMessage = 'there is error'
         })
     }, 3000);
   }

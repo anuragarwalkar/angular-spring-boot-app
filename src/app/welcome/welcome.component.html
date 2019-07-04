@@ -1,7 +1,7 @@
 <p class="mt-4">
   Welcome, {{routeName|uppercase}}
 </p>
-<img *ngIf="!welcomeMessage && clickOnEvent" src="assets/giphy.webp" width="100">
+<img *ngIf="!welcomeMessage && clickOnEvent && !error" src="assets/giphy.webp" width="100">
 <p [ngClass]="error?'text-danger':'text-success'">{{welcomeMessage}}</p>
 
 <div class="text-center mt-4">

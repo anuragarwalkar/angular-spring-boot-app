@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { BasicAuthenticationService } from '../services/basic-authentication.service';
+import { HttpIntercepterBasicAuthServiceService } from '../services/http-intercepter-basic-auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   };
 
   loginForm:FormGroup
-  constructor(private router:Router,private loginService:AuthenticationService) { }
+  constructor(private router:Router,
+    private basicAuth:BasicAuthenticationService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -24,32 +27,40 @@ export class LoginComponent implements OnInit {
       password:new FormControl('',Validators.required)
     })
 
-    if(this.loginService.isLoggedIn()){
-      this.router.navigate(['user',this.loginService.getUsername()])
+    this.handleLogin();
+  }
+
+  handleLogin(){
+    if(this.basicAuth.isLoggedIn()){
+      this.router.navigate(['user',this.basicAuth.getUsername])
     };
   }
 
+ 
 
   onLogin():void{
-    if(this.loginService.loginUser(this.loginForm.value.username,
-      this.loginForm.value.password)){
-          this.router.navigate(['user',this.loginForm.value.username])
-      }else{
+    this.basicAuth.executeAuthenticationService(this.loginForm.value.username,
+      this.loginForm.value.password).subscribe(()=>{
+        this.router.navigate(['user',this.loginForm.value.username]);
+        this.loginForm.reset();
+      },()=>{
         this.login ={
-          status:true,
+          status:true ,
           loginMessage:'login faild invalid username or password'
         }
-
-        setTimeout(() => {
-          this.login ={
-            status:false,
-            loginMessage:'suceess'
-          }
-        }, 5000);
-
         this.loginForm.reset();
-      }
-      
+      },()=>{
+        
+      })
+
+      setTimeout(() => {
+        this.login ={
+          status:false,
+          loginMessage:'suceess'
+        }
+      }, 5000);
+
+          
   }
 
 

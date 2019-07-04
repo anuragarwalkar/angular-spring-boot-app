@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:'user/:username/todos', component:TodosComponent,canActivate:[RouteGuardService]},
   {path:'logout', component:LogoutComponent,canActivate:[RouteGuardService]},
   {path:'user/:username/todo',component:TodoComponent,canActivate:[RouteGuardService]},
-  {path:'todo/:id',component:TodoComponent,canActivate:[RouteGuardService]},
+  {path:'user/:username/todo/:id',component:TodoComponent,canActivate:[RouteGuardService]},
   {path:'**',component:ErrorComponent,canActivate:[RouteGuardService]}
 
 ];
