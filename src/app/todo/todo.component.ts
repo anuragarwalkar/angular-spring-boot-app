@@ -50,7 +50,7 @@ export class TodoComponent implements OnInit {
       username: new FormControl('',Validators.required),
       description: new FormControl('',Validators.required),
       targetDate : new FormControl(this.getTodayDate,Validators.required),
-      update: new FormControl('',Validators.required)
+      isDone: new FormControl('',Validators.required)
     })
 
     if(this.updateForm){
@@ -60,7 +60,7 @@ export class TodoComponent implements OnInit {
         username: res.username,
         description: res.description,
         targetDate : res.targetDate.substring(0,10),
-        update: res.isDone?res.isDone.toString():''
+        isDone: res.isDone !== null ?res.isDone.toString():''
       })
     })
     }
@@ -89,6 +89,7 @@ export class TodoComponent implements OnInit {
    
   }else{
     console.log('create')
+    console.log('this.updateTodoForm.value:', this.updateTodoForm.value)
     this.service.createPost(this.userName,this.updateTodoForm.value).subscribe((res)=>{
       console.log(res);
     },(err)=>{
