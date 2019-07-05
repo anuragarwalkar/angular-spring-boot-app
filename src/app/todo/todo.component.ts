@@ -60,7 +60,7 @@ export class TodoComponent implements OnInit {
         username: res.username,
         description: res.description,
         targetDate : res.targetDate.substring(0,10),
-        update: res.done.toString()
+        update: res.isDone?res.isDone.toString():''
       })
     })
     }
@@ -69,7 +69,7 @@ export class TodoComponent implements OnInit {
   onCancelTodo(){
     if(confirm("Are you sure want to cancel"))
     if(this.updateForm){
-      this.router.navigate(['todos'])
+      this.navigateToTodos(this.userName);
     }else{
       this.router.navigate([''])
     }
@@ -79,7 +79,8 @@ export class TodoComponent implements OnInit {
 
     if(this.updateForm){
       console.log('update')
-    this.service.updateTodo(this.userName,this.todoId,this.updateTodoForm.value).subscribe((res)=>{
+      console.log('this.updateTodoForm.value:', this.updateTodoForm.getRawValue())
+    this.service.updateTodo(this.userName,this.todoId,this.updateTodoForm.getRawValue()).subscribe((res)=>{
       console.log(res);
 
     },(err)=>{

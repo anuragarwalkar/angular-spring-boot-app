@@ -12,28 +12,43 @@ export class BasicAuthenticationService {
 
   constructor(private http:HttpClient) { }
 
-  executeAuthenticationService(username:string, password:string){
-    const authenticationString = 'Basic ' + 
-    window.btoa(username+':'+ password);
+  // executeAuthenticationService(username:string, password:string){
+  //   const authenticationString = 'Basic ' + 
+  //   window.btoa(username+':'+ password);
 
-    let headers = new HttpHeaders({
-      Authorization: authenticationString
-    })
-    return this.http.get<AuthenticationBean>
-    (`${this.url}/basicauth`,{
-      headers
-    }).pipe(map(
-      (data) =>{
-        sessionStorage.setItem('authenticaterUser',username);
-        sessionStorage.setItem('token',authenticationString);
-        return data;
-      }
-    ))
-  }
+  //   let headers = new HttpHeaders({
+  //     Authorization: authenticationString
+  //   })
+  //   return this.http.get<AuthenticationBean>
+  //   (`${this.url}/basicauth`,{
+  //     headers
+  //   }).pipe(map(
+  //     (data) =>{
+  //       sessionStorage.setItem('authenticaterUser',username);
+  //       sessionStorage.setItem('token',authenticationString);
+  //       return data;
+  //     }
+  //   ))
+  // }
+
+  executeAuthenticationService(username:string, password:string){
+
+      return this.http.post<any>
+      (`${this.url}/authenticate`,{
+        username,
+        password
+      }).pipe(map(
+        (data) =>{
+          sessionStorage.setItem('authenticaterUser',username);
+          sessionStorage.setItem('token',`Bearer ${data.token}`);
+          return data;
+        }
+      ))
+    }
 
 
   isLoggedIn():boolean{
-   if(sessionStorage.getItem('authenticaterUser') !== null){
+   if(sessionStorage.getItem('token') !== null){
      return true
    }
    return false;

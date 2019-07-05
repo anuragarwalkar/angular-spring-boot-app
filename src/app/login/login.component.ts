@@ -38,15 +38,42 @@ export class LoginComponent implements OnInit {
 
  
 
+  // onLogin():void{
+  //   this.basicAuth.executeAuthenticationService(this.loginForm.value.username,
+  //     this.loginForm.value.password).subscribe(()=>{
+  //       this.router.navigate(['user',this.loginForm.value.username]);
+  //       this.loginForm.reset();
+  //     },()=>{
+  //       this.login ={
+  //         status:true ,
+  //         loginMessage:'login faild invalid username or password'
+  //       }
+  //       this.loginForm.reset();
+  //     },()=>{
+        
+  //     })
+
+  //     setTimeout(() => {
+  //       this.login ={
+  //         status:false,
+  //         loginMessage:'suceess'
+  //       }
+  //     }, 5000);
+
+          
+  // }
+
   onLogin():void{
     this.basicAuth.executeAuthenticationService(this.loginForm.value.username,
-      this.loginForm.value.password).subscribe(()=>{
+      this.loginForm.value.password).subscribe((data)=>{
+        console.log('data:', data)
         this.router.navigate(['user',this.loginForm.value.username]);
         this.loginForm.reset();
-      },()=>{
+      },(err)=>{
+        console.log('err:', err)
         this.login ={
           status:true ,
-          loginMessage:'login faild invalid username or password'
+          loginMessage:err.error
         }
         this.loginForm.reset();
       },()=>{
@@ -62,7 +89,6 @@ export class LoginComponent implements OnInit {
 
           
   }
-
 
 
 }

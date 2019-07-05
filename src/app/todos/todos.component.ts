@@ -35,6 +35,7 @@ export class TodosComponent implements OnInit {
     this.userName = this.route.snapshot.params['username'];
     this.todoService.retriveAllTodos(this.userName).subscribe((res)=>{
       this.todos = res;
+      console.log('res:', res);
     },(err)=>{
       alert('404 Server is unrechable please contact anurag');
     })

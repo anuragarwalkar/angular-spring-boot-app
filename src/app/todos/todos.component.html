@@ -17,7 +17,7 @@
         <th>{{todo.username}}</th>
         <td>{{todo.description}}</td>
         <td>{{todo.targetDate|date}}</td>
-        <td>{{todo.done}}</td>
+        <td>{{todo.isDone}}</td>
         <td><button class="btn btn-success btn-sm" (click)="onUpdate(todo.id)">Update</button></td>
         <td><button class="btn btn-danger btn-sm" (click)="onDelete(todo.id)">Delete</button></td>
       </tr>
