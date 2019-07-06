@@ -1,0 +1,5 @@
+@media screen and (min-width:500px){
+    .desltop-logout{
+        display: none;
+    }    
+}

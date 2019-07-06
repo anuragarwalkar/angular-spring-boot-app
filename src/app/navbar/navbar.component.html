@@ -14,7 +14,12 @@
         <li class="nav-item">
           <a class="nav-link"  routerLinkActive="active"  routerLink="{{getRoute()}}">Todos</a>
         </li>
+
+        <li class="nav-item desltop-logout" *ngIf="this.authenticationService.isLoggedIn()">
+            <a class="nav-link" (click)="onLogOut()" style="cursor:pointer;">logOut</a>
+          </li>
       </ul>
+      
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" 
     *ngIf="this.authenticationService.isLoggedIn()">
