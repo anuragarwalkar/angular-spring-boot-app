@@ -1,6 +1,6 @@
 .footer-new {
-  position: fixed;
-    bottom: 0;
+    /* position: absolute;
+    bottom: 0; */
     height: 50px; 
     width: 100%;
     line-height: 50px;  

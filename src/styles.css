@@ -1,3 +1,24 @@
-body{
-    margin-bottom: 4rem;
+body {
+   margin:0;
+   padding:0;
+   height:100%;
 }
+
+#container {
+    min-height:100vh;
+    position:relative;
+ }
+
+#body {
+    padding:10px;
+    padding-bottom:50px;   /* Height of the footer */
+ }
+
+#footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    line-height: 50px;
+    height:50px;   /* Height of the footer */
+    background-color: #343a40;
+ }

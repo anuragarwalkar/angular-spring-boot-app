@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  springServer:'http://localhost:8080'
+  springServer:'http://192.168.0.2:8080'
 };
 
 /*

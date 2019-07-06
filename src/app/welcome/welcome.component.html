@@ -1,13 +1,17 @@
-<p class="mt-4">
-  Welcome, {{routeName|uppercase}}
-</p>
-<img *ngIf="!welcomeMessage && clickOnEvent && !error" src="assets/giphy.webp" width="100">
-<p [ngClass]="error?'text-danger':'text-success'">{{welcomeMessage}}</p>
-
-<div class="text-center mt-4">
-  <button (click)="getWelcomeMessage()" class="btn btn-success mr-4">Get message</button>
-  <a routerLink="todo" class="btn btn-warning mr-4">Create a new todo</a>
-  <a routerLink="todos" class="btn btn-primary">Get all todos</a>
+<div class="home-page">
+  <p class="mt-4">
+    Welcome, {{routeName|uppercase}}
+  </p>
+  <img *ngIf="!welcomeMessage && clickOnEvent && !error" src="assets/giphy.webp" width="100">
+  <p [ngClass]="error?'text-danger':'text-success'">{{welcomeMessage}}</p>
   
+  <div class="text-center mt-4">
+    <div class="btn-custom">
+      <button (click)="getWelcomeMessage()" class="btn btn-success">Get message</button>
+      <button routerLink="todo" class="btn btn-warning">Create a new todo</button>
+      <button routerLink="todos" class="btn btn-primary">Get all todos</button>
+    </div>
+    
+  </div>
 </div>
 

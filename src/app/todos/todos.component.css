@@ -1,0 +1,20 @@
+.card{
+    display: none;
+}
+
+@media screen and (max-width: 700px){
+    .mobile-button{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+
+    table{
+        display: none;
+    }
+
+    .card{
+        display: block;
+    }
+}

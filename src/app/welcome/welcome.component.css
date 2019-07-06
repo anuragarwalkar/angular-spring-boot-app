@@ -1,0 +1,10 @@
+button{
+    margin-right:1rem;
+}  
+
+@media screen and (max-width:700px){
+    button{
+        display: block;
+        margin: 1rem auto;
+    }  
+}

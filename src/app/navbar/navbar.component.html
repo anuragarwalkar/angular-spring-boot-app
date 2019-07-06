@@ -1,17 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="">SpringBoot</a>
+    <a class="navbar-brand"  routerLink="">SpringBoot</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav" *ngIf="this.authenticationService.isLoggedIn()">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="">Home 
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+            true}" routerLink="">Home 
             <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="{{getRoute()}}">Todos</a>
+          <a class="nav-link"  routerLinkActive="active"  routerLink="{{getRoute()}}">Todos</a>
         </li>
       </ul>
     </div>
