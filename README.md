@@ -9,7 +9,7 @@ Navigate to "https://anuragarwalkar.github.io/FullStackAngularSpring/".
 
 ## Local Development server
 
-Run `ng serve` for a dev server. Navigate to "http://localhost:4200/". The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 # Deploy on GitHub
 
@@ -20,4 +20,4 @@ Run `ng serve` for a dev server. Navigate to "http://localhost:4200/". The app w
 
 ## Further help
 
-Please get in touch to me `anuragarwalkar@gmail.com`
+Please get in touch to me "anuragarwalkar@gmail.com"
