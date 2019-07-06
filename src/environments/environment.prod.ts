@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  springServer:'https://anuragspringboot.herokuapp.com'
 };
