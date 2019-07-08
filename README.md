@@ -16,6 +16,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Using angular-cli-ghpages
 `ng build` --prod --base-href "https://anuragarwalkar.github.io/FullStackAngularSpring/"
 
+`npm i` angular-cli-ghpages --save-dev
+
 `npx ngh` --dir=dist/fullStackAngularSpring
 
 ## Further help
