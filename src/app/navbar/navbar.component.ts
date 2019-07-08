@@ -19,12 +19,13 @@ export class NavbarComponent implements OnInit {
   }
 
   getRoute():string{
-    this.getRouteCalled++;
-    if(this.getRouteCalled <= 1)
-    {
-      this.userName = 
-    sessionStorage.getItem('authenticaterUser');
-  }
+  //   this.getRouteCalled++;
+  //   if(this.getRouteCalled <= 1)
+  //   {
+     
+  // }
+  this.userName = 
+  sessionStorage.getItem('authenticaterUser');
     return `user/${this.userName}/todos`
   }
 

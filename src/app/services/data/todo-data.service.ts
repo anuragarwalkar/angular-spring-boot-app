@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TodoDataService {
-  url: string = environment.springServer;
+  url: string = environment.springServerJpa;
 
   constructor(private http:HttpClient) { }
 

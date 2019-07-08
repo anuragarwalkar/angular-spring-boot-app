@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DataService {
 
-  private url = environment.springServer;
+  private url = environment.springServerJpa;
 
   constructor(private http:HttpClient) { }
 
