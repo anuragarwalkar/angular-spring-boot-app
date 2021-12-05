@@ -21,5 +21,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 `npx ngh` --dir=dist/fullStackAngularSpring
 
 ## Further help
-
 Please get in touch to me "anuragarwalkar@gmail.com"
