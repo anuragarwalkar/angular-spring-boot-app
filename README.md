@@ -1,4 +1,4 @@
-# FullStackAngularSpring
+# Full Stack Angular Spring Boot
 
 I have build this project using Angular 7 + SpringBoot
 
